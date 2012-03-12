@@ -1,0 +1,5 @@
+﻿<viewdata model="string userName"/>
+
+<h1>Logged In</h1>
+<p>Hello, ${userName}!</p>
+<a route-Service="Login" controller="Authentication" action="Logout">Log out</a>

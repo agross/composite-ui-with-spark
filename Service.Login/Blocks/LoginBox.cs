@@ -8,7 +8,14 @@ namespace Service.Login.Blocks
   {
     protected override void RenderBlock()
     {
-      Html.RenderPartial(@"Login\LoginBox");
+      if (ViewContext.HttpContext.Request.IsAuthenticated)
+      {
+        Html.RenderPartial(@"Login\LoggedIn", ViewContext.HttpContext.User.Identity.Name);
+      }
+      else
+      {
+        Html.RenderPartial(@"Login\LoginBox");
+      }
     }
   }
 }

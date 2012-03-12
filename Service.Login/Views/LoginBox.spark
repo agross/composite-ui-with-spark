@@ -1,3 +1,9 @@
 ﻿<h1>Login</h1>
+<Form route-Service="Login" controller="Authentication" action="Login">
+  <label for="user">Name: </label>
+  <input type="text" name="user"/>
 
-<p>Box here</p>
+  <label for="password">Password: </label>
+  <input type="password" name="password"/>
+  <input type="submit" value="Log in"/>
+</Form>

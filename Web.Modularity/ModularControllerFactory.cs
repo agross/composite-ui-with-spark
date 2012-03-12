@@ -32,15 +32,14 @@ namespace Web.Modularity
 
     public IController CreateController(RequestContext requestContext, string controllerName)
     {
-      var controllerKey = controllerName.ToLowerInvariant() + "controller";
+      var controllerKey = controllerName + "Controller";
 
       object service;
       if (requestContext.RouteData.Values.TryGetValue("service", out service))
       {
-        var serviceControllerKey = Convert.ToString(service).ToLowerInvariant() + "." + controllerKey;
+        var serviceControllerKey = controllerKey.ScopedTo(Convert.ToString(service));
         if (_kernel.HasComponent(serviceControllerKey))
         {
-          //requestContext.RouteData.Values["controller"] = area + "/" + controllerName;
           return _kernel.Resolve<IController>(serviceControllerKey);
         }
       }

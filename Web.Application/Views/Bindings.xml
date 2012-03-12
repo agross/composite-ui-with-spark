@@ -1,0 +1,31 @@
+﻿<bindings>
+  <element name="Form">
+    <start># using (Html.BeginForm("@action", "@controller", new RouteValueDictionary{{"@route-*"}}, FormMethod.@method, new Dictionary&lt;string,object&gt;{{"@*"}})) {</start>
+    <end># }</end>
+  </element>
+  <element name="Form">
+    <start># using (Html.BeginForm("@action", "@controller", new RouteValueDictionary{{"@route-*"}}, FormMethod.Post, new Dictionary&lt;string,object&gt;{{"@*"}})) {</start>
+    <end># }</end>
+  </element>
+  <element name="Form">
+    <start># using (Html.BeginForm("@action", ViewContext.RouteData.GetRequiredString("controller"), new RouteValueDictionary{{"@route-*"}}, FormMethod.Post, new Dictionary&lt;string,object&gt;{{"@*"}})) {</start>
+    <end># }</end>
+  </element>
+  <element name="Form">
+    <start># using (Html.BeginForm(ViewContext.RouteData.GetRequiredString("action"), ViewContext.RouteData.GetRequiredString("controller"), new RouteValueDictionary{{"@route-*"}}, FormMethod.Post, new Dictionary&lt;string,object&gt;{{"@*"}})) {</start>
+    <end># }</end>
+  </element>
+
+  <element name="a">
+    Html.ActionLink("child::*", "@action", "@controller", new RouteValueDictionary{{"@route-*"}}, new Dictionary&lt;string,object&gt;{{"@*"}})
+  </element>
+  <element name="a">
+    Html.ActionLink("child::*", "@action", new RouteValueDictionary{{"@route-*"}}, new Dictionary&lt;string,object&gt;{{"@*"}})
+  </element>
+  <element name="a">
+    Html.ActionLink("@text", "@action", "@controller", new RouteValueDictionary{{"@route-*"}}, new Dictionary&lt;string,object&gt;{{"@*"}})
+  </element>
+  <element name="a">
+    Html.ActionLink("@text", "@action", new RouteValueDictionary{{"@route-*"}}, new Dictionary&lt;string,object&gt;{{"@*"}})
+  </element>
+</bindings>

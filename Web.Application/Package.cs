@@ -3,7 +3,6 @@ using System.Web.Mvc;
 using System.Web.Routing;
 
 using Castle.MicroKernel;
-using Castle.MicroKernel.Registration;
 
 using Web.Modularity;
 
@@ -13,13 +12,7 @@ namespace Web.Application
   {
     public override void Register(IKernel container, ICollection<RouteBase> routes, ICollection<IViewEngine> viewEngines)
     {
-      container
-        .Register(Classes
-                    .FromThisAssembly()
-                    .BasedOn<IController>()
-                    .Configure(c => c
-                                      .Named(c.Implementation.Name.ToLowerInvariant())
-                                      .LifestylePerWebRequest()));
+      RegisterDefault(container, routes, viewEngines, null);
     }
   }
 }

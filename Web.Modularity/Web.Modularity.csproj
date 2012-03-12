@@ -64,6 +64,7 @@
     <Compile Include="Bindings\ServiceBindingProvider.cs" />
     <Compile Include="Blocks\Block.cs" />
     <Compile Include="Blocks\BlockBuilder.cs" />
+    <Compile Include="ComponentNamingExtensions.cs" />
     <Compile Include="EmbeddedContentRouteHandler.cs" />
     <Compile Include="Html\BlockExtensions.cs" />
     <Compile Include="Blocks\BlockFactory.cs" />

@@ -48,8 +48,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Blocks\LoginBox.cs" />
+    <Compile Include="Controllers\AuthenticationController.cs" />
     <Compile Include="Package.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\AuthenticationService.cs" />
+    <Compile Include="Services\IAuthenticationService.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Web.Modularity\Web.Modularity.csproj">
@@ -60,6 +63,7 @@
   <ItemGroup>
     <None Include="packages.config" />
     <EmbeddedResource Include="Views\LoginBox.spark" />
+    <EmbeddedResource Include="Views\LoggedIn.spark" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Views\Bindings.xml" />

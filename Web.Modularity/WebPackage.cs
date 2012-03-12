@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
@@ -46,30 +45,36 @@ namespace Web.Modularity
         .Register(Classes
                     .FromAssembly(assembly)
                     .BasedOn<IController>()
-                    .Configure(c => c.Named(ImplementationByService(service, c))
-                                      .LifestyleTransient()))
+                    .Configure(c => c.Named(c.Implementation.ScopedTo(service))
+                                      .LifestylePerWebRequest()))
         .Register(Classes
                     .FromAssembly(assembly)
                     .BasedOn<IBlock>()
-                    .Configure(c => c.Named(ImplementationByService(service, c))
-                                      .LifestyleTransient()))
-        .Register(Component
-                    .For<IBindingProvider>()
-                    .ImplementedBy<ServiceBindingProvider>()
-                    .LifestyleSingleton()
-                    .Named(service + "/ServiceBindingProvider")
-                    .DependsOn(Dependency.OnValue(typeof(string), service)));
-    }
+                    .Configure(c => c.Named(c.Implementation.ScopedTo(service))
+                                      .LifestyleTransient()));
 
-    static string ImplementationByService(string service, ComponentRegistration c)
-    {
-      return String.Format("{0}/{1}",
-                           service.ToLowerInvariant(),
-                           c.Implementation.Name.ToLowerInvariant());
+      if (service != null)
+      {
+        container
+          .Register(Component
+                      .For<IBindingProvider>()
+                      .ImplementedBy<ServiceBindingProvider>()
+                      .LifestyleSingleton()
+                      .Named("ServiceBindingProvider".ScopedTo(service))
+                      .DependsOn(Dependency.OnValue(typeof(string), service)));
+      }
     }
 
     static void RegisterRoutes(ICollection<RouteBase> routes, Assembly assembly, string service)
     {
+      if (service == null)
+      {
+        routes.Add(new Route("{controller}/{action}",
+                             new RouteValueDictionary(new { controller = "home", action = "index" }),
+                             new MvcRouteHandler()));
+        return;
+      }
+
       routes.Add(new Route("{service}/{controller}/{action}",
                            new RouteValueDictionary(new { controller = "home", action = "index" }),
                            new RouteValueDictionary(new { service }),
@@ -83,6 +88,11 @@ namespace Web.Modularity
 
     static void RegisterViewFolders(IEnumerable<IViewEngine> viewEngines, Assembly assembly, string service)
     {
+      if (service == null)
+      {
+        return;
+      }
+
       var viewFolder = new EmbeddedViewFolder(assembly, assembly.GetName().Name + ".Views");
       var sparkViewFactory = viewEngines.OfType<SparkViewFactory>().First();
 

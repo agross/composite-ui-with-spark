@@ -1,1 +1,6 @@
-﻿<use namespace="Web.Modularity.Html"/>
+﻿<use namespace="System.Collections.Generic"/>
+<use namespace="System.Web.Routing"/>
+<use namespace="System.Web.Mvc"/>
+<use namespace="System.Web.Mvc.Html"/>
+
+<use namespace="Web.Modularity.Html"/>
