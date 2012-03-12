@@ -1,0 +1,9 @@
+﻿<p>This site consists of a host which combines several modules.</p>
+
+#Html.RenderBlock("Stock/StockItems");
+#Html.RenderBlock("Stock/StockItemsForArticle", new { articleNumber = 23 });
+
+<Login_LoginBox />
+
+<Stock_StockItems />
+<Stock_StockItemsForArticle articleNumber="23"/>

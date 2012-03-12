@@ -1,0 +1,10 @@
+﻿<viewdata model="int numberOfItems"/>
+
+<content:menu>
+  Some item for the menu
+</content:menu>
+
+<h2>Number of items in stock</h2>
+<div>
+  ${numberOfItems} Items
+</div>

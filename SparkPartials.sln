@@ -1,0 +1,50 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Web.Application", "Web.Application\Web.Application.csproj", "{682CB37B-6068-45B4-80A3-251FDA670010}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Service.Login", "Service.Login\Service.Login.csproj", "{8CC3C20A-573A-45FC-86F5-4852374EC302}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Service.Branding", "Service.Branding\Service.Branding.csproj", "{F77D6A1A-B23F-412F-A61F-318651B49A6D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Web.Modularity", "Web.Modularity\Web.Modularity.csproj", "{F4D6FCA7-6AA0-4DC6-88F5-587F90644526}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Service.Stock", "Service.Stock\Service.Stock.csproj", "{63BF1F71-76D6-4110-84E3-1033FDFCA664}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{0478F194-634F-4058-B104-44A565D32CC3}"
+	ProjectSection(SolutionItems) = preProject
+		.nuget\NuGet.exe = .nuget\NuGet.exe
+		.nuget\NuGet.targets = .nuget\NuGet.targets
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{682CB37B-6068-45B4-80A3-251FDA670010}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{682CB37B-6068-45B4-80A3-251FDA670010}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{682CB37B-6068-45B4-80A3-251FDA670010}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{682CB37B-6068-45B4-80A3-251FDA670010}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8CC3C20A-573A-45FC-86F5-4852374EC302}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8CC3C20A-573A-45FC-86F5-4852374EC302}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8CC3C20A-573A-45FC-86F5-4852374EC302}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8CC3C20A-573A-45FC-86F5-4852374EC302}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F77D6A1A-B23F-412F-A61F-318651B49A6D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F77D6A1A-B23F-412F-A61F-318651B49A6D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F77D6A1A-B23F-412F-A61F-318651B49A6D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F77D6A1A-B23F-412F-A61F-318651B49A6D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F4D6FCA7-6AA0-4DC6-88F5-587F90644526}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F4D6FCA7-6AA0-4DC6-88F5-587F90644526}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F4D6FCA7-6AA0-4DC6-88F5-587F90644526}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F4D6FCA7-6AA0-4DC6-88F5-587F90644526}.Release|Any CPU.Build.0 = Release|Any CPU
+		{63BF1F71-76D6-4110-84E3-1033FDFCA664}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{63BF1F71-76D6-4110-84E3-1033FDFCA664}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{63BF1F71-76D6-4110-84E3-1033FDFCA664}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{63BF1F71-76D6-4110-84E3-1033FDFCA664}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

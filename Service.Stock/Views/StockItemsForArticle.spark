@@ -1,0 +1,6 @@
+﻿<viewdata model="Service.Stock.Blocks.StockItemsForArticleView"/>
+
+<h2>Number of items in stock for article# ${Model.Article}</h2>
+<div>
+  ${Model.NumberOfItems} Items
+</div>

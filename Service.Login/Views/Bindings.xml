@@ -1,0 +1,3 @@
+﻿<bindings>
+  <element name="Login_LoginBox">#Html.RenderBlock("Login/LoginBox");</element>
+</bindings>

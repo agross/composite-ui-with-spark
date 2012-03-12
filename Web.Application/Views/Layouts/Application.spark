@@ -1,0 +1,21 @@
+﻿<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <title>Modularity Demo</title>
+    <link type="text/css" rel="stylesheet" href="~/content/Site.css"/>
+    <use:head/>
+  </head>
+  <body>
+    <header>
+      <h1>Modularity Demo</h1>
+    </header>
+
+    <nav>
+      <use:menu />
+    </nav>
+
+    <section id="content">
+      <use:view/>
+    </section>
+  </body>
+</html>

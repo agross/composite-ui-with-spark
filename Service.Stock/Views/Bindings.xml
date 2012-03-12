@@ -1,0 +1,4 @@
+﻿<bindings>
+  <element name="Stock_StockItems">#Html.RenderBlock("Stock/StockItems");</element>
+  <element name="Stock_StockItemsForArticle">#Html.RenderBlock("Stock/StockItemsForArticle", new { articleNumber = @articleNumber });</element>
+</bindings>
