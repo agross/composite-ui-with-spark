@@ -3,4 +3,5 @@
 <h2>Number of items in stock for article# ${Model.Article}</h2>
 <div>
   ${Model.NumberOfItems} Items
+  <img src="~/Content/Stock/Images/monorail.jpg" />
 </div>
