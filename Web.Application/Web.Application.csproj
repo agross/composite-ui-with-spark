@@ -114,6 +114,10 @@
     <Content Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Infrastructure\Infrastructure.csproj">
+      <Project>{CEB053B7-4DD6-4C32-A81E-C6F0FF22FA69}</Project>
+      <Name>Infrastructure</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Service.Login\Service.Login.csproj">
       <Project>{8CC3C20A-573A-45FC-86F5-4852374EC302}</Project>
       <Name>Service.Login</Name>
