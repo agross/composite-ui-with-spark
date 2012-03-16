@@ -31,12 +31,14 @@ namespace Service.Einaescherung.Host
                             .Named("Application Store"),
                           Component
                             .For<IDocumentSession>()
+                            .LifestyleScoped()
                             .UsingFactoryMethod(kernel =>
                                                 kernel.Resolve<IDocumentStore>("Application Store").OpenSession())
                             .Named("Application Session"),
                           Component
                             .For<IManageUnitsOfWork>()
                             .ImplementedBy<ApplicationRavenUnitOfWork>()
+                            .LifestyleScoped()
                             .Named("Application Unit Of Work")
                             .DependsOn(Dependency.OnComponent(typeof(IDocumentSession), "Application Session")));
 
