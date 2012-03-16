@@ -118,6 +118,10 @@
       <Project>{CEB053B7-4DD6-4C32-A81E-C6F0FF22FA69}</Project>
       <Name>Infrastructure</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Service.Einaescherung\Service.Einaescherung.csproj">
+      <Project>{19180BA0-E051-48DD-BE31-1E1146131E06}</Project>
+      <Name>Service.Einaescherung</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Service.Login\Service.Login.csproj">
       <Project>{8CC3C20A-573A-45FC-86F5-4852374EC302}</Project>
       <Name>Service.Login</Name>

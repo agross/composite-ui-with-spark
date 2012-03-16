@@ -1,4 +1,5 @@
 ﻿<bindings>
   <element name="Sterbefall_Schnellannahme">#Html.RenderBlock("Sterbefall/Schnellannahme");</element>
   <element name="Sterbefall_Liste">#Html.RenderBlock("Sterbefall/Liste");</element>
+  <element name="Sterbefall_Name">#Html.RenderBlock("Sterbefall/Name", new { sterbefallNummer = @sterbefallNummer });</element>
 </bindings>

@@ -1,0 +1,3 @@
+﻿<viewdata model="string name"/>
+
+Sterbefall: ${name}

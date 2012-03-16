@@ -10,15 +10,14 @@ using Raven.Client.Document;
 
 using Web.Modularity;
 
-namespace Service.Sterbefall
+namespace Service.Einaescherung
 {
   public class Package : WebPackage
   {
-    const string ServiceName = "Sterbefall";
+    const string ServiceName = "Einaescherung";
 
     public override void Register(IKernel container, ICollection<RouteBase> routes, ICollection<IViewEngine> viewEngines)
     {
-      
       RegisterDefault(container, routes, viewEngines, ServiceName);
 
       var documentStore = new DocumentStore
