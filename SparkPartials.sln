@@ -23,6 +23,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Service.Sterbefall.Host", "
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Service.Sterbefall.Contracts", "Service.Sterbefall.Contracts\Service.Sterbefall.Contracts.csproj", "{50ED36B4-9BCD-4637-91B7-D9F5CC87F729}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RavenDbStarter", "RavenDbStarter\RavenDbStarter.csproj", "{1968AD21-F76F-40F8-AF8E-BA020487A28E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -61,6 +63,10 @@ Global
 		{50ED36B4-9BCD-4637-91B7-D9F5CC87F729}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{50ED36B4-9BCD-4637-91B7-D9F5CC87F729}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{50ED36B4-9BCD-4637-91B7-D9F5CC87F729}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1968AD21-F76F-40F8-AF8E-BA020487A28E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1968AD21-F76F-40F8-AF8E-BA020487A28E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1968AD21-F76F-40F8-AF8E-BA020487A28E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1968AD21-F76F-40F8-AF8E-BA020487A28E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

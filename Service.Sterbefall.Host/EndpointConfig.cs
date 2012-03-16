@@ -14,6 +14,8 @@ namespace Service.Sterbefall.Host
         .UnicastBus()
         .LoadMessageHandlers()
         .Sagas()
+        .RavenSagaPersister()
+        .RunTimeoutManager()
         .CreateBus()
         .Start();
     }
