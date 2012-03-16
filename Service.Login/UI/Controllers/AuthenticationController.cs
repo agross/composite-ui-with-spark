@@ -3,7 +3,7 @@ using System.Web.Security;
 
 using Service.Login.Services;
 
-namespace Service.Login.Controllers
+namespace Service.Login.UI.Controllers
 {
   public class AuthenticationController : Controller
   {

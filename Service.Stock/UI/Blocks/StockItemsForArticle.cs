@@ -1,17 +1,12 @@
 using System.Web.Mvc.Html;
 
 using Service.Stock.Services;
+using Service.Stock.UI.Models;
 
 using Web.Modularity.Blocks;
 
-namespace Service.Stock.Blocks
+namespace Service.Stock.UI.Blocks
 {
-  public class StockItemsForArticleView
-  {
-    public int Article { get; set; }
-    public int NumberOfItems { get; set; }
-  }
-
   public class StockItemsForArticle : Block
   {
     readonly int _articleNumber;

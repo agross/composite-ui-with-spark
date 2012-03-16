@@ -2,7 +2,7 @@
 
 using Web.Modularity.Blocks;
 
-namespace Service.Login.Blocks
+namespace Service.Login.UI.Blocks
 {
   public class LoginBox : Block
   {

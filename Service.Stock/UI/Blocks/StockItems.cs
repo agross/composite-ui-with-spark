@@ -4,7 +4,7 @@ using Service.Stock.Services;
 
 using Web.Modularity.Blocks;
 
-namespace Service.Stock.Blocks
+namespace Service.Stock.UI.Blocks
 {
   public class StockItems : Block
   {

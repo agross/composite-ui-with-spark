@@ -1,0 +1,7 @@
+﻿<h1>Schnellannahme</h1>
+<Form route-Service="Sterbefall" controller="Schnellannahme" action="Post">
+  <label for="user">Name: </label>
+  <input type="text" name="name"/>
+
+  <input type="submit" value="Sterbefall annehmen"/>
+</Form>

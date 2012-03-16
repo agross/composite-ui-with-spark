@@ -83,7 +83,7 @@ namespace Web.Modularity
       routes.Add(new Route("content/{service}/{*resource}",
                            new RouteValueDictionary(),
                            new RouteValueDictionary(new { service }),
-                           new EmbeddedContentRouteHandler(assembly, assembly.GetName().Name + ".Content")));
+                           new EmbeddedContentRouteHandler(assembly, assembly.GetName().Name + ".UI.Content")));
     }
 
     static void RegisterViewFolders(IEnumerable<IViewEngine> viewEngines, Assembly assembly, string service)
@@ -93,7 +93,7 @@ namespace Web.Modularity
         return;
       }
 
-      var viewFolder = new EmbeddedViewFolder(assembly, assembly.GetName().Name + ".Views");
+      var viewFolder = new EmbeddedViewFolder(assembly, assembly.GetName().Name + ".UI.Views");
       var sparkViewFactory = viewEngines.OfType<SparkViewFactory>().First();
 
       sparkViewFactory.ViewFolder = sparkViewFactory.ViewFolder
