@@ -6,18 +6,18 @@ using Service.Sterbefall.Contracts;
 
 namespace Service.Einaescherung.MessageHandlers
 {
-  public class H1 : IHandleMessages<BereitZurEinäscherung>
+  public class NeuerSterbefallBereitZurEinaescherung : IHandleMessages<BereitZurEinäscherung>
   {
     readonly IDocumentSession _db;
 
-    public H1(IDocumentSession db)
+    public NeuerSterbefallBereitZurEinaescherung(IDocumentSession db)
     {
       _db = db;
     }
 
     public void Handle(BereitZurEinäscherung message)
     {
-      _db.Store(new Models.Sterbefall(message.SterbefallNummer));
+      _db.Store(new Einaescherung.Models.Sterbefall(message.SterbefallNummer));
     }
   }
 }

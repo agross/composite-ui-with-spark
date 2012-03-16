@@ -3,6 +3,6 @@
 <h1>${Model.Count} Sterbefälle bereit zur Einäscherung </h1>
 <ul>
   <li each="var id in Model.SterbefallNummern">
-    <Sterbefall_Name sterbefallNummer="id"/>
+		<Sterbefall_Name sterbefallNummer="id"/>
   </li>
 </ul>

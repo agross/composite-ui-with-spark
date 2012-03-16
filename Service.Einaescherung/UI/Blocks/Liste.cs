@@ -19,7 +19,9 @@ namespace Service.Einaescherung.UI.Blocks
 
     protected override void RenderBlock()
     {
-      Html.RenderPartial(@"Einaescherung\Liste", new Models.Liste { SterbefallNummern = Enumerable.Empty<Guid>(), Count = 0 });
+      var ravenQueryable = _db.Query<Einaescherung.Models.Sterbefall>().Customize(l => l.WaitForNonStaleResults()).ToList();
+      var ids = ravenQueryable.Select(x => x.Id).ToList();
+      Html.RenderPartial(@"Einaescherung\Liste", new Models.Liste { SterbefallNummern = ids, Count = ids.Count() });
     }
   }
 }

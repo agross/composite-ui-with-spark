@@ -24,7 +24,7 @@ namespace Infrastructure
                            .LifestylePerWebRequest(),
                          Component
                            .For<IDocumentSession>()
-                           .LifestylePerWebRequest()
+                           .LifestyleTransient()
                            .UsingFactoryMethod((kernel, model, context) =>
                            {
                              var session = SessionFor(context.Handler.ComponentModel, kernel).OpenSession();

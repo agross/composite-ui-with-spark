@@ -1,3 +1,4 @@
+using System;
 using System.Web.Mvc.Html;
 
 using Raven.Client;
@@ -9,9 +10,9 @@ namespace Service.Sterbefall.UI.Blocks
   public class Name : Block
   {
     readonly IDocumentSession _db;
-    readonly int _sterbefallNummer;
+    readonly Guid _sterbefallNummer;
 
-    public Name(IDocumentSession db, int sterbefallNummer)
+    public Name(IDocumentSession db, Guid sterbefallNummer)
     {
       _db = db;
       _sterbefallNummer = sterbefallNummer;
