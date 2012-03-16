@@ -5,6 +5,8 @@ using System.Web.Routing;
 using Castle.Windsor;
 using Castle.Windsor.Installer;
 
+using Infrastructure;
+
 using NServiceBus;
 
 namespace Web.Application
@@ -30,13 +32,14 @@ namespace Web.Application
 
       ControllerBuilder.Current.SetControllerFactory(container.Resolve<IControllerFactory>());
 
-      RegisterGlobalFilters(GlobalFilters.Filters);
+      RegisterGlobalFilters(GlobalFilters.Filters, container);
       RegisterRoutes(RouteTable.Routes);
     }
 
-    static void RegisterGlobalFilters(GlobalFilterCollection filters)
+    static void RegisterGlobalFilters(GlobalFilterCollection filters, IWindsorContainer container)
     {
       filters.Add(new HandleErrorAttribute());
+      filters.Add(new RavenActionFilterAttribute(container));
     }
 
     static void RegisterRoutes(RouteCollection routes)

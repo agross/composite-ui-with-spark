@@ -24,7 +24,7 @@ namespace Service.Sterbefall.UI.Controllers
       var sterbefall = new Sterbefall.Models.Sterbefall(name);
       _db.Store(sterbefall);
 
-      _bus.Send(new NehmeSterbefallAn { SterbefallNummer = sterbefall.Id });
+      _bus.Publish(new SterbefallAngenommen { SterbefallNummer = sterbefall.Id });
       return RedirectToAction("Index", "Home");
     }
   }

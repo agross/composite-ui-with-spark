@@ -17,12 +17,23 @@ namespace Infrastructure
   {
     public override void Register(IKernel container, ICollection<RouteBase> routes, ICollection<IViewEngine> viewEngines)
     {
-      container.Register(Component
+      container.Register(
+                         Component
+                           .For<ISessionAccessor>()
+                           .ImplementedBy<SessionAccessor>()
+                           .LifestylePerWebRequest(),
+                         Component
                            .For<IDocumentSession>()
                            .LifestylePerWebRequest()
                            .UsingFactoryMethod((kernel, model, context) =>
-                                               SessionFor(context.Handler.ComponentModel, kernel).OpenSession())
-                           .OnDestroy(session => session.SaveChanges()));
+                           {
+                             var session = SessionFor(context.Handler.ComponentModel, kernel).OpenSession();
+
+                             var sessions = kernel.Resolve<ISessionAccessor>();
+                             sessions.Add(session);
+
+                             return session;
+                           }));
     }
 
     static IDocumentStore SessionFor(ComponentModel model, IKernel kernel)

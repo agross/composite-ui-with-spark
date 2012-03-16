@@ -2,5 +2,22 @@
 
 <h1>${Model.Count} Sterbefälle</h1>
 <ul>
-  <li each="var s in Model.Sterbefaelle">${s.Name}</li>
+  <li each="var s in Model.Sterbefaelle">
+    ${s.Name}
+    <span if="s.Sterbedatum.HasValue">, gest. ${s.Sterbedatum}</span>
+    <span if="s.PapiereVollstaendig">, Papiere vollständig</span>
+    <ul>
+      <li>
+        <a route-Service="Sterbefall"
+           controller="PersoenlicheDaten"
+           action="SetSterbedatum"
+           route-sterbefallNummer="${s.Id}">Sterbedatum setzen</a>
+      </li>
+      <li><a route-Service="Sterbefall"
+             controller="PersoenlicheDaten" 
+             action="SetPapiereVollstaendig"
+             route-sterbefallNummer="${s.Id}">Papiere vervollständigen</a>
+      </li>
+    </ul>
+  </li>
 </ul>
