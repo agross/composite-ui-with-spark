@@ -17,7 +17,6 @@ namespace Web.Application
       container.Install(FromAssembly.InThisApplication());
 
       Configure.WithWeb()
-        .Log4Net()
         .CastleWindsorBuilder(container)
         .XmlSerializer()
         .MsmqTransport()
