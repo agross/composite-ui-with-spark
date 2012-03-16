@@ -8,7 +8,7 @@ using Service.Sterbefall.Contracts;
 namespace Service.Sterbefall.Sagas
 {
   public class S1 : Saga<S1Data>,
-                    ISagaStartedBy<SterbefallEingegangen>,
+                    ISagaStartedBy<NehmeSterbefallAn>,
                     IHandleMessages<PapiereSindVollständig>,
                     IHandleMessages<SterbedatumHinterlegt>,
                     IHandleTimeouts<Wiedervorlage>
@@ -50,14 +50,14 @@ namespace Service.Sterbefall.Sagas
       Data.ZweiTageVergangen = true;
     }
 
-    public void Handle(SterbefallEingegangen message)
+    public void Handle(NehmeSterbefallAn message)
     {
       Data.SterbefallNummer = message.SterbefallNummer;
     }
 
     public override void ConfigureHowToFindSaga()
     {
-      ConfigureMapping<SterbefallEingegangen>(s => s.SterbefallNummer, m => m.SterbefallNummer);
+      ConfigureMapping<NehmeSterbefallAn>(s => s.SterbefallNummer, m => m.SterbefallNummer);
       ConfigureMapping<PapiereSindVollständig>(s => s.SterbefallNummer, m => m.SterbefallNummer);
       ConfigureMapping<SterbedatumHinterlegt>(s => s.SterbefallNummer, m => m.SterbefallNummer);
       ConfigureMapping<Wiedervorlage>(s => s.SterbefallNummer, m => m.SterbefallNummer);

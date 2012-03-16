@@ -20,8 +20,11 @@ namespace Web.Application
         .CastleWindsorBuilder(container)
         .XmlSerializer()
         .MsmqTransport()
+        .IsTransactional(true)
+        .PurgeOnStartup(true)
         .MsmqSubscriptionStorage()
         .UnicastBus()
+        .ImpersonateSender(false)
         .CreateBus()
         .Start();
 

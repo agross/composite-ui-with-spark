@@ -1,0 +1,6 @@
+﻿<viewdata model="Service.Sterbefall.UI.Models.Liste"/>
+
+<h1>${Model.Count} Sterbefälle</h1>
+<ul>
+  <li each="var s in Model.Sterbefaelle">${s.Name}</li>
+</ul>

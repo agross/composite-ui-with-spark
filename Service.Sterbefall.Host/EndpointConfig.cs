@@ -7,6 +7,7 @@ namespace Service.Sterbefall.Host
     public void Init()
     {
       Configure.With()
+        .Log4Net()
         .CastleWindsorBuilder()
         .XmlSerializer()
         .MsmqTransport()

@@ -84,18 +84,21 @@
     <Compile Include="Sagas\PapiereSindVollständig.cs" />
     <Compile Include="Sagas\S1Data.cs" />
     <Compile Include="Sagas\SterbedatumHinterlegt.cs" />
-    <Compile Include="Sagas\SterbefallEingegangen.cs" />
+    <Compile Include="Sagas\NehmeSterbefallAn.cs" />
     <Compile Include="Sagas\Wiedervorlage.cs" />
     <Compile Include="UI\Blocks\Schnellannahme.cs" />
+    <Compile Include="UI\Blocks\Liste.cs" />
     <Compile Include="UI\Controllers\SchnellannahmeController.cs" />
     <Compile Include="Models\Sterbefall.cs" />
     <Compile Include="Package.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Sagas\S1.cs" />
+    <Compile Include="UI\Models\Liste.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
     <EmbeddedResource Include="UI\Views\Schnellannahme.spark" />
+    <EmbeddedResource Include="UI\Views\Liste.spark" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="UI\Views\Bindings.xml" />

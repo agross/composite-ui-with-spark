@@ -21,10 +21,10 @@ namespace Service.Sterbefall.UI.Controllers
 
     public ActionResult Post(string name)
     {
-      var sterbefall = new Models.Sterbefall(name);
+      var sterbefall = new Sterbefall.Models.Sterbefall(name);
       _db.Store(sterbefall);
 
-      _bus.Publish(new SterbefallEingegangen { SterbefallNummer = sterbefall.Id });
+      _bus.Send(new NehmeSterbefallAn { SterbefallNummer = sterbefall.Id });
       return RedirectToAction("Index", "Home");
     }
   }
