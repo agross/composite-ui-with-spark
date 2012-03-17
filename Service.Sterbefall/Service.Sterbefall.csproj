@@ -81,6 +81,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="RavenInstaller.cs" />
     <Compile Include="Sagas\PapiereSindVollstaendig.cs" />
     <Compile Include="Sagas\S1Data.cs" />
     <Compile Include="Sagas\SterbedatumHinterlegt.cs" />

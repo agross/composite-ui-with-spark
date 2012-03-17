@@ -1,13 +1,8 @@
 ﻿using Castle.MicroKernel.Registration;
 using Castle.Windsor;
-
-using Infrastructure;
+using Castle.Windsor.Installer;
 
 using NServiceBus;
-using NServiceBus.UnitOfWork;
-
-using Raven.Client;
-using Raven.Client.Document;
 
 namespace Service.Einaescherung.Host
 {
@@ -17,30 +12,7 @@ namespace Service.Einaescherung.Host
 
     public void Init()
     {
-      var documentStore = new DocumentStore
-                          {
-                            Url = "http://localhost:8080/",
-                            DefaultDatabase = "Einaescherung",
-                            EnlistInDistributedTransactions = true
-                          };
-      documentStore.Initialize();
-
-      _container.Register(Component
-                            .For<IDocumentStore>()
-                            .Instance(documentStore)
-                            .Named("Application Store"),
-                          Component
-                            .For<IDocumentSession>()
-                            .LifestyleScoped()
-                            .UsingFactoryMethod(kernel =>
-                                                kernel.Resolve<IDocumentStore>("Application Store").OpenSession())
-                            .Named("Application Session"),
-                          Component
-                            .For<IManageUnitsOfWork>()
-                            .ImplementedBy<ApplicationRavenUnitOfWork>()
-                            .LifestyleScoped()
-                            .Named("Application Unit Of Work")
-                            .DependsOn(Dependency.OnComponent(typeof(IDocumentSession), "Application Session")));
+      _container.Install(FromAssembly.InDirectory(new AssemblyFilter(".", "Service.*")));
 
       Configure.With()
         .Log4Net()

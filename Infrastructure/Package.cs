@@ -6,6 +6,7 @@ using System.Web.Routing;
 using Castle.Core;
 using Castle.MicroKernel;
 using Castle.MicroKernel.Registration;
+using Castle.Windsor;
 
 using Raven.Client;
 
@@ -15,7 +16,7 @@ namespace Infrastructure
 {
   public class Package : WebPackage
   {
-    public override void Register(IKernel container, ICollection<RouteBase> routes, ICollection<IViewEngine> viewEngines)
+    public override void Register(IWindsorContainer container, ICollection<RouteBase> routes, ICollection<IViewEngine> viewEngines)
     {
       container.Register(
                          Component

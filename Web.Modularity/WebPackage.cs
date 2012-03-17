@@ -6,6 +6,7 @@ using System.Web.Routing;
 
 using Castle.MicroKernel;
 using Castle.MicroKernel.Registration;
+using Castle.Windsor;
 
 using Spark.Bindings;
 using Spark.FileSystem;
@@ -18,19 +19,14 @@ namespace Web.Modularity
 {
   public interface IWebPackage
   {
-    void Register(IKernel container, ICollection<RouteBase> routes, ICollection<IViewEngine> viewEngines);
+    void Register(IWindsorContainer container, ICollection<RouteBase> routes, ICollection<IViewEngine> viewEngines);
   }
 
   public abstract class WebPackage : IWebPackage
   {
-    public abstract void Register(IKernel container,
-                                  ICollection<RouteBase> routes,
-                                  ICollection<IViewEngine> viewEngines);
+    public abstract void Register(IWindsorContainer container, ICollection<RouteBase> routes, ICollection<IViewEngine> viewEngines);
 
-    protected void RegisterDefault(IKernel container,
-                                   ICollection<RouteBase> routes,
-                                   IEnumerable<IViewEngine> viewEngines,
-                                   string service)
+    protected void RegisterDefault(IWindsorContainer container, ICollection<RouteBase> routes, IEnumerable<IViewEngine> viewEngines, string service)
     {
       var assembly = GetType().Assembly;
 
@@ -39,7 +35,7 @@ namespace Web.Modularity
       RegisterViewFolders(viewEngines, assembly, service);
     }
 
-    static void RegisterComponents(IKernel container, Assembly assembly, string service)
+    static void RegisterComponents(IWindsorContainer container, Assembly assembly, string service)
     {
       container
         .Register(Classes

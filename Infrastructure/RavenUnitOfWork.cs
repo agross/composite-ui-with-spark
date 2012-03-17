@@ -6,11 +6,11 @@ using Raven.Client;
 
 namespace Infrastructure
 {
-  public class ApplicationRavenUnitOfWork : IManageUnitsOfWork
+  public class RavenUnitOfWork : IManageUnitsOfWork
   {
     readonly IDocumentSession _session;
 
-    public ApplicationRavenUnitOfWork(IDocumentSession session)
+    public RavenUnitOfWork(IDocumentSession session)
     {
       _session = session;
     }

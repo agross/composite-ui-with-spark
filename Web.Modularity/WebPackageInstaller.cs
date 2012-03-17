@@ -31,7 +31,7 @@ namespace Web.Modularity
                     .LifeStyle.Singleton);
 
       SetUpSparkViewEngine(container);
-      RegisterPackages(container.Kernel, RouteTable.Routes, ViewEngines.Engines);
+      RegisterPackages(container, RouteTable.Routes, ViewEngines.Engines);
     }
 
     static void SetUpSparkViewEngine(IWindsorContainer container)
@@ -48,7 +48,7 @@ namespace Web.Modularity
       SparkEngineStarter.RegisterViewEngine(services);
     }
 
-    void LocatePackages(IKernel kernel)
+    void LocatePackages(IWindsorContainer kernel)
     {
       var searchPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory,
                                     AppDomain.CurrentDomain.RelativeSearchPath);
@@ -62,11 +62,11 @@ namespace Web.Modularity
       }
     }
 
-    void RegisterPackages(IKernel kernel, ICollection<RouteBase> routes, ICollection<IViewEngine> engines)
+    void RegisterPackages(IWindsorContainer container, ICollection<RouteBase> routes, ICollection<IViewEngine> engines)
     {
-      LocatePackages(kernel);
+      LocatePackages(container);
 
-      var remainingPackages = kernel.GetHandlers(typeof(IWebPackage));
+      var remainingPackages = container.Kernel.GetHandlers(typeof(IWebPackage));
 
       while (remainingPackages.Any())
       {
@@ -81,9 +81,9 @@ namespace Web.Modularity
 
         foreach (var handler in validPackages)
         {
-          var package = kernel.Resolve<IWebPackage>(handler.ComponentModel.Name);
-          package.Register(kernel, routes, engines);
-          kernel.ReleaseComponent(package);
+          var package = container.Resolve<IWebPackage>(handler.ComponentModel.Name);
+          package.Register(container, routes, engines);
+          container.Release(package);
         }
 
         remainingPackages = remainingPackages.Except(validPackages).ToArray();
