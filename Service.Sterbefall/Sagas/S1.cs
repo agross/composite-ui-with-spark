@@ -9,17 +9,17 @@ namespace Service.Sterbefall.Sagas
 {
   public class S1 : Saga<S1Data>,
                     ISagaStartedBy<SterbefallAngenommen>,
-                    IHandleMessages<PapiereSindVollständig>,
+                    IHandleMessages<PapiereSindVollstaendig>,
                     IHandleMessages<SterbedatumHinterlegt>,
                     IHandleTimeouts<Wiedervorlage>
   {
-    public void Handle(PapiereSindVollständig message)
+    public void Handle(PapiereSindVollstaendig message)
     {
       Data.PapiereVollständig = true;
 
       if (Data.ZweiTageVergangen)
       {
-        Bus.Publish(new BereitZurEinäscherung { SterbefallNummer = message.SterbefallNummer });
+        Bus.Publish(new BereitZurEinaescherung { SterbefallNummer = message.SterbefallNummer });
         MarkAsComplete();
       }
     }
@@ -29,7 +29,7 @@ namespace Service.Sterbefall.Sagas
       var noNeedToWait = DateTime.Now.Subtract(message.Sterbedatum) > TimeSpan.FromDays(2);
       if (noNeedToWait && Data.PapiereVollständig)
       {
-        Bus.Publish(new BereitZurEinäscherung { SterbefallNummer = message.SterbefallNummer });
+        Bus.Publish(new BereitZurEinaescherung { SterbefallNummer = message.SterbefallNummer });
         MarkAsComplete();
         return;
       }
@@ -42,7 +42,7 @@ namespace Service.Sterbefall.Sagas
     {
       if (Data.PapiereVollständig)
       {
-        Bus.Publish(new BereitZurEinäscherung { SterbefallNummer = state.SterbefallNummer });
+        Bus.Publish(new BereitZurEinaescherung { SterbefallNummer = state.SterbefallNummer });
         MarkAsComplete();
         return;
       }
@@ -58,7 +58,7 @@ namespace Service.Sterbefall.Sagas
     public override void ConfigureHowToFindSaga()
     {
       ConfigureMapping<SterbefallAngenommen>(s => s.SterbefallNummer, m => m.SterbefallNummer);
-      ConfigureMapping<PapiereSindVollständig>(s => s.SterbefallNummer, m => m.SterbefallNummer);
+      ConfigureMapping<PapiereSindVollstaendig>(s => s.SterbefallNummer, m => m.SterbefallNummer);
       ConfigureMapping<SterbedatumHinterlegt>(s => s.SterbefallNummer, m => m.SterbefallNummer);
       ConfigureMapping<Wiedervorlage>(s => s.SterbefallNummer, m => m.SterbefallNummer);
     }

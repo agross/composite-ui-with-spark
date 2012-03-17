@@ -2,9 +2,9 @@ using System;
 
 using NServiceBus;
 
-namespace Service.Sterbefall.Contracts
+namespace Service.Sterbefall.Sagas
 {
-  public class BereitZurEinäscherung : IEvent
+  public class PapiereSindVollstaendig : IEvent
   {
     public Guid SterbefallNummer { get; set; }
   }

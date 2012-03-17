@@ -81,7 +81,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Sagas\PapiereSindVollständig.cs" />
+    <Compile Include="Sagas\PapiereSindVollstaendig.cs" />
     <Compile Include="Sagas\S1Data.cs" />
     <Compile Include="Sagas\SterbedatumHinterlegt.cs" />
     <Compile Include="Sagas\SterbefallAngenommen.cs" />

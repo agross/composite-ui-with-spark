@@ -34,7 +34,7 @@ namespace Service.Sterbefall.UI.Controllers
       var sterbefall = _db.Load<Sterbefall.Models.Sterbefall>(sterbefallNummer);
       sterbefall.PapiereVollstaendig = true;
 
-      _bus.Publish(new PapiereSindVollständig { SterbefallNummer = sterbefallNummer});
+      _bus.Publish(new PapiereSindVollstaendig { SterbefallNummer = sterbefallNummer});
       return RedirectToAction("Index", "Home");
     }
   }
