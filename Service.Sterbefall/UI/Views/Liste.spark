@@ -10,12 +10,18 @@
       <li>
         <a route-Service="Sterbefall"
            controller="PersoenlicheDaten"
-           action="SetSterbedatum"
-           route-sterbefallNummer="${s.Id}">Sterbedatum setzen</a>
+           action="SterbedatumVor3Tagen"
+           route-sterbefallNummer="${s.Id}">Sterbedatum vor 3 Tagen setzen</a>
+      </li>
+      <li>
+        <a route-Service="Sterbefall"
+           controller="PersoenlicheDaten"
+           action="SterbedatumVorKnapp2Tagen"
+           route-sterbefallNummer="${s.Id}">Sterbedatum vor 2 d 23:59:45 h setzen</a>
       </li>
       <li><a route-Service="Sterbefall"
              controller="PersoenlicheDaten" 
-             action="SetPapiereVollstaendig"
+             action="PapiereVollstaendig"
              route-sterbefallNummer="${s.Id}">Papiere vervollständigen</a>
       </li>
     </ul>

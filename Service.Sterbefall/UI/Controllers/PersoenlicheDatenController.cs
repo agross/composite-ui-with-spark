@@ -20,16 +20,25 @@ namespace Service.Sterbefall.UI.Controllers
       _bus = bus;
     }
 
-    public ActionResult SetSterbedatum(Guid sterbefallNummer)
+    public ActionResult SterbedatumVor3Tagen(Guid sterbefallNummer)
     {
       var sterbefall = _db.Load<Sterbefall.Models.Sterbefall>(sterbefallNummer);
-      sterbefall.Sterbedatum = DateTime.Now.Subtract(TimeSpan.FromDays(2));
+      sterbefall.Sterbedatum = DateTime.Now.Subtract(TimeSpan.FromDays(3));
+
+      _bus.Publish(new SterbedatumHinterlegt { SterbefallNummer = sterbefallNummer, Sterbedatum = sterbefall.Sterbedatum.Value });
+      return RedirectToAction("Index", "Home");
+    } 
+    
+    public ActionResult SterbedatumVorKnapp2Tagen(Guid sterbefallNummer)
+    {
+      var sterbefall = _db.Load<Sterbefall.Models.Sterbefall>(sterbefallNummer);
+      sterbefall.Sterbedatum = DateTime.Now.Subtract(TimeSpan.FromDays(2).Subtract(TimeSpan.FromSeconds(15)));
 
       _bus.Publish(new SterbedatumHinterlegt { SterbefallNummer = sterbefallNummer, Sterbedatum = sterbefall.Sterbedatum.Value });
       return RedirectToAction("Index", "Home");
     }
 
-    public ActionResult SetPapiereVollstaendig(Guid sterbefallNummer)
+    public ActionResult PapiereVollstaendig(Guid sterbefallNummer)
     {
       var sterbefall = _db.Load<Sterbefall.Models.Sterbefall>(sterbefallNummer);
       sterbefall.PapiereVollstaendig = true;
