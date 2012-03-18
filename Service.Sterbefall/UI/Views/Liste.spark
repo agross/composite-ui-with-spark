@@ -17,7 +17,7 @@
         <a route-Service="Sterbefall"
            controller="PersoenlicheDaten"
            action="SterbedatumVorKnapp2Tagen"
-           route-sterbefallNummer="${s.Id}">Sterbedatum vor 2 d 23:59:45 h setzen</a>
+           route-sterbefallNummer="${s.Id}">Sterbedatum vor 1 d 23:59:45 h setzen</a>
       </li>
       <li><a route-Service="Sterbefall"
              controller="PersoenlicheDaten" 
