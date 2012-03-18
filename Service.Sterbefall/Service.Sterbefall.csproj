@@ -83,7 +83,7 @@
   <ItemGroup>
     <Compile Include="RavenInstaller.cs" />
     <Compile Include="Sagas\PapiereSindVollstaendig.cs" />
-    <Compile Include="Sagas\S1Data.cs" />
+    <Compile Include="Sagas\BereitschaftZurEinaescherungData.cs" />
     <Compile Include="Sagas\SterbedatumHinterlegt.cs" />
     <Compile Include="Sagas\SterbefallAngenommen.cs" />
     <Compile Include="Sagas\Wiedervorlage.cs" />
@@ -95,7 +95,7 @@
     <Compile Include="Models\Sterbefall.cs" />
     <Compile Include="Package.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Sagas\S1.cs" />
+    <Compile Include="Sagas\BereitschaftZurEinaescherung.cs" />
     <Compile Include="UI\Models\Liste.cs" />
   </ItemGroup>
   <ItemGroup>

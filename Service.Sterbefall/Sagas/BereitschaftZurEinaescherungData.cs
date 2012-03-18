@@ -4,7 +4,7 @@ using NServiceBus.Saga;
 
 namespace Service.Sterbefall.Sagas
 {
-  public class S1Data : IContainSagaData
+  public class BereitschaftZurEinaescherungData : IContainSagaData
   {
     public bool ZweiTageVergangen { get; set; }
     public bool PapiereVollständig { get; set; }

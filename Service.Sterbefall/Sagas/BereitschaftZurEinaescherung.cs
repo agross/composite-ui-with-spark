@@ -7,12 +7,17 @@ using Service.Sterbefall.Contracts;
 
 namespace Service.Sterbefall.Sagas
 {
-  public class S1 : Saga<S1Data>,
-                    ISagaStartedBy<SterbefallAngenommen>,
-                    IHandleMessages<PapiereSindVollstaendig>,
-                    IHandleMessages<SterbedatumHinterlegt>,
-                    IHandleTimeouts<Wiedervorlage>
+  public class BereitschaftZurEinaescherung : Saga<BereitschaftZurEinaescherungData>,
+                                              ISagaStartedBy<SterbefallAngenommen>,
+                                              IHandleMessages<PapiereSindVollstaendig>,
+                                              IHandleMessages<SterbedatumHinterlegt>,
+                                              IHandleTimeouts<Wiedervorlage>
   {
+    public void Handle(SterbefallAngenommen message)
+    {
+      Data.SterbefallNummer = message.SterbefallNummer;
+    }
+
     public void Handle(PapiereSindVollstaendig message)
     {
       Data.PapiereVollständig = true;
@@ -48,11 +53,6 @@ namespace Service.Sterbefall.Sagas
       }
 
       Data.ZweiTageVergangen = true;
-    }
-
-    public void Handle(SterbefallAngenommen message)
-    {
-      Data.SterbefallNummer = message.SterbefallNummer;
     }
 
     public override void ConfigureHowToFindSaga()
