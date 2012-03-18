@@ -11,8 +11,12 @@ namespace Service.Sterbefall.Sagas
                                               ISagaStartedBy<SterbefallAngenommen>,
                                               IHandleMessages<PapiereSindVollstaendig>,
                                               IHandleMessages<SterbedatumHinterlegt>,
-                                              IHandleTimeouts<Wiedervorlage>
+                                              IHandleTimeouts<Wiedervorlage>,
+                                              IWantCustomInitialization
+
   {
+    public TimeSpan WartezeitVorFreigabe { get; set; }
+
     public void Handle(SterbefallAngenommen message)
     {
       Data.SterbefallNummer = message.SterbefallNummer;
@@ -22,7 +26,7 @@ namespace Service.Sterbefall.Sagas
     {
       Data.PapiereVollständig = true;
 
-      if (Data.ZweiTageVergangen)
+      if (Data.WartezeitVergangen)
       {
         Bus.Publish(new BereitZurEinaescherung { SterbefallNummer = message.SterbefallNummer });
         MarkAsComplete();
@@ -31,15 +35,15 @@ namespace Service.Sterbefall.Sagas
 
     public void Handle(SterbedatumHinterlegt message)
     {
-      var noNeedToWait = DateTime.Now.Subtract(message.Sterbedatum) > TimeSpan.FromDays(2);
-      if (noNeedToWait && Data.PapiereVollständig)
+      var wartezeitVergangen = DateTime.Now.Subtract(message.Sterbedatum) > WartezeitVorFreigabe;
+      if (wartezeitVergangen && Data.PapiereVollständig)
       {
         Bus.Publish(new BereitZurEinaescherung { SterbefallNummer = message.SterbefallNummer });
         MarkAsComplete();
         return;
       }
 
-      var wiedervorlageAm = message.Sterbedatum.AddDays(2);
+      var wiedervorlageAm = message.Sterbedatum.Add(WartezeitVorFreigabe);
       RequestUtcTimeout(wiedervorlageAm, new Wiedervorlage { SterbefallNummer = message.SterbefallNummer });
     }
 
@@ -52,7 +56,13 @@ namespace Service.Sterbefall.Sagas
         return;
       }
 
-      Data.ZweiTageVergangen = true;
+      Data.WartezeitVergangen = true;
+    }
+
+    public void Init()
+    {
+      Configure.Instance.Configurer
+        .ConfigureProperty<BereitschaftZurEinaescherung>(s => s.WartezeitVorFreigabe, TimeSpan.FromDays(2));
     }
 
     public override void ConfigureHowToFindSaga()

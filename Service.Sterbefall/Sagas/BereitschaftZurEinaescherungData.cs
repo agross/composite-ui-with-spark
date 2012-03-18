@@ -6,7 +6,7 @@ namespace Service.Sterbefall.Sagas
 {
   public class BereitschaftZurEinaescherungData : IContainSagaData
   {
-    public bool ZweiTageVergangen { get; set; }
+    public bool WartezeitVergangen { get; set; }
     public bool PapiereVollständig { get; set; }
     public Guid SterbefallNummer { get; set; }
 

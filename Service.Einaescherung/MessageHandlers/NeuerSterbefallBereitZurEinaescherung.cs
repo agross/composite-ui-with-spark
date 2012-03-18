@@ -17,7 +17,7 @@ namespace Service.Einaescherung.MessageHandlers
 
     public void Handle(BereitZurEinaescherung message)
     {
-      _db.Store(new Einaescherung.Models.Sterbefall(message.SterbefallNummer));
+      _db.Store(new Models.Sterbefall(message.SterbefallNummer));
     }
   }
 }
