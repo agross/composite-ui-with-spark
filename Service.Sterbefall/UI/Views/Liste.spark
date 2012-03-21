@@ -6,6 +6,7 @@
     ${s.Name}
     <span if="s.Sterbedatum.HasValue">, gest. ${s.Sterbedatum}</span>
     <span if="s.PapiereVollstaendig">, Papiere vollständig</span>
+    <Einaescherung_Datum sterbefallNummer="s.Id" />
     <ul>
       <li>
         <a route-Service="Sterbefall"

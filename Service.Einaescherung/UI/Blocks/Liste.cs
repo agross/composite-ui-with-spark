@@ -20,7 +20,7 @@ namespace Service.Einaescherung.UI.Blocks
     protected override void RenderBlock()
     {
       var ravenQueryable = _db.Query<Einaescherung.Models.Sterbefall>().Customize(l => l.WaitForNonStaleResults()).ToList();
-      var ids = ravenQueryable.Select(x => x.Id).ToList();
+      var ids = ravenQueryable.Where(x => x.Einaescherungsdatum == null).Select(x => x.Id).ToList();
       Html.RenderPartial(@"Einaescherung\Liste", new Models.Liste { SterbefallNummern = ids, Count = ids.Count() });
     }
   }

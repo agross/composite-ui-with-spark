@@ -3,6 +3,10 @@
 <h1>${Model.Count} Sterbefälle bereit zur Einäscherung </h1>
 <ul>
   <li each="var id in Model.SterbefallNummern">
-		<Sterbefall_Name sterbefallNummer="id"/>
+    <Sterbefall_Name sterbefallNummer="id"/>
+		<a route-Service="Einaescherung"
+			 controller="Einaescherung"
+			 action="Einaeschern"
+			 route-sterbefallNummer="${id}">Einäschern</a>
   </li>
 </ul>

@@ -10,5 +10,6 @@ namespace Service.Einaescherung.Models
     }
 
     public Guid Id { get; set; }
+    public DateTime? Einaescherungsdatum { get; set; }
   }
 }

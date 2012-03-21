@@ -19,7 +19,10 @@ namespace Service.Sterbefall.UI.Blocks
 
     protected override void RenderBlock()
     {
-      var list = _db.Query<Sterbefall.Models.Sterbefall>().OrderBy(x => x.Name);
+      var list = _db
+        .Query<Sterbefall.Models.Sterbefall>()
+        .OrderBy(x => x.Name)
+        ;
       Html.RenderPartial(@"Sterbefall\Liste", new Models.Liste { Sterbefaelle = list, Count = list.Count() });
     }
   }
