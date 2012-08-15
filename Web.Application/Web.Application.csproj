@@ -130,10 +130,6 @@
       <Project>{3E4283AE-A693-4DAF-A2B9-323669CDA199}</Project>
       <Name>Service.Sterbefall</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Service.Stock\Service.Stock.csproj">
-      <Project>{63BF1F71-76D6-4110-84E3-1033FDFCA664}</Project>
-      <Name>Service.Stock</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Web.Modularity\Web.Modularity.csproj">
       <Project>{F4D6FCA7-6AA0-4DC6-88F5-587F90644526}</Project>
       <Name>Web.Modularity</Name>
